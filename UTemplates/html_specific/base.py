@@ -1,3 +1,4 @@
+import html
 from ..general_base import GeneralBaseElement
 
 
@@ -44,11 +45,17 @@ class BaseHTMLElement(GeneralBaseElement):
 
     @property
     def _content(self) -> str:
+        def ensure_content_is_escaped(content: str | GeneralBaseElement) -> str:
+            if isinstance(content, GeneralBaseElement):
+                escaped_content: str = str(content)
+            else:
+                escaped_content: str = html.escape(str(content))
+            return escaped_content
         if self.self_closing:
             return ""
         content_strs: list[str] = []
         for item in self.content:
-            content_strs.append(str(item))
+            content_strs.append(ensure_content_is_escaped(item))
         return "".join(content_strs)
 
     @property
