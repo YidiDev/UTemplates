@@ -5455,4 +5455,3 @@ class WordBreakOpportunityElement(BaseHTMLElement):
 
         """
         super().__init__("wbr", self_closing=True, **kwargs)
-
