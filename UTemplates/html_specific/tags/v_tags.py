@@ -1,4 +1,4 @@
-from html_specific.base import BaseHTMLElement
+from ..base import BaseHTMLElement
 
 
 class VariableElement(BaseHTMLElement):

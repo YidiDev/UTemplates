@@ -1,4 +1,4 @@
-from .general import *
+from .general_tags import *
 from .a_tags import *
 from .b_tags import *
 from .c_tags import *
@@ -7,7 +7,6 @@ from .e_tags import *
 from .f_tags import *
 from .h_tags import *
 from .i_tags import *
-from .j_tags import *
 from .k_tags import *
 from .l_tags import *
 from .m_tags import *

@@ -1,4 +1,4 @@
-from tags import DoctypeElement
+from .tags import DoctypeElement
 
 
 class HTML5Declaration(DoctypeElement):

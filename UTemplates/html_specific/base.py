@@ -1,4 +1,4 @@
-from general_base import GeneralBaseElement
+from ..general_base import GeneralBaseElement
 
 
 class BaseHTMLElement(GeneralBaseElement):

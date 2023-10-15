@@ -1,3 +1,9 @@
+from .base import BaseHTMLElement
+from .declarations import HTML5Declaration
+from .tags import (TitleElement, HeadElement, BodyElement, HTMLElement)
+from ..general_base import GeneralBaseElement
+
+
 class HTML5Page(GeneralBaseElement):
     def __init__(self, title: str = "Untitled") -> None:
         self.head_elements: list[BaseHTMLElement] = [TitleElement(content=title)]
