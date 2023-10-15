@@ -3,7 +3,12 @@ from ..general_base import GeneralBaseElement
 
 class BaseHTMLElement(GeneralBaseElement):
     def __init__(
-            self, tag_name: str, attributes: dict[str, any] = None, content: any = None, self_closing: bool = False
+            self,
+            tag_name: str,
+            attributes: dict[str, any] = None,
+            content: any = None,
+            self_closing: bool = False,
+            declaration: bool = False
     ) -> None:
         self.tag_name: str = tag_name
         self.attributes: dict[str, any] = attributes if attributes is not None else {}
@@ -14,6 +19,9 @@ class BaseHTMLElement(GeneralBaseElement):
         else:
             self.content: list[any] = [content]
         self.self_closing: bool = self_closing
+        self.declaration: bool = declaration
+        if self.declaration:
+            self.self_closing: bool = True
 
     @property
     def _attributes(self) -> str:
@@ -29,7 +37,10 @@ class BaseHTMLElement(GeneralBaseElement):
 
     @property
     def _opening_tag(self) -> str:
-        return f"<{self.tag_name}{self._attributes}>"
+        if self.self_closing and not self.declaration:
+            return f"<{self.tag_name}{self._attributes}/>"
+        else:
+            return f"<{self.tag_name}{self._attributes}>"
 
     @property
     def _content(self) -> str:

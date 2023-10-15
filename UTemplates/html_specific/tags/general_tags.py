@@ -7,10 +7,15 @@ class GeneralHTMLElement(BaseHTMLElement):
             tag_name: str,
             attributes: dict[str, any] = None,
             content: str | BaseHTMLElement | list[str | BaseHTMLElement] = None,
-            self_closing: bool = False
+            self_closing: bool = False,
+            declaration: bool = False
     ) -> None:
         super().__init__(
-            tag_name=tag_name, attributes=attributes, content=content, self_closing=self_closing
+            tag_name=tag_name,
+            attributes=attributes,
+            content=content,
+            self_closing=self_closing,
+            declaration=declaration
         )
 
 
@@ -103,4 +108,4 @@ class DoctypeElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
 
         """
-        super().__init__("!DOCTYPE", attributes={declaration: True}, self_closing=True, **kwargs)
+        super().__init__("!DOCTYPE", attributes={declaration: True}, declaration=True, **kwargs)
