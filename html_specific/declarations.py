@@ -14,7 +14,7 @@ class HTML4_01StrictDeclaration(DoctypeElement):
 
 
 class HTML4_01TransitionalDeclaration(DoctypeElement):
-    def __init__(self, **kwaadrgs) -> None:
+    def __init__(self, **kwargs) -> None:
         super().__init__(
             'HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"',
             **kwargs
