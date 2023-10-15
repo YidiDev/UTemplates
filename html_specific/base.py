@@ -49,35 +49,3 @@ class BaseHTMLElement(GeneralBaseElement):
 
     def to_string(self) -> str:
         return f"{self._opening_tag}{self._content}{self._closing_tag}"
-
-
-class HTMLPage(GeneralBaseElement):
-    def __init__(self, title: str = "Untitled") -> None:
-        self.head_elements: list[BaseHTMLElement] = [BaseHTMLElement("title", content=title)]
-        self.body_elements: list[BaseHTMLElement] = []
-
-    def add_to_head(self, element: BaseHTMLElement) -> None:
-        self.head_elements.append(element)
-
-    def add_to_body(self, element: BaseHTMLElement) -> None:
-        self.body_elements.append(element)
-
-    @property
-    def _html_level_elements(self) -> list[BaseHTMLElement]:
-        return [
-            BaseHTMLElement("head", content=self.head_elements),
-            BaseHTMLElement("body", content=self.body_elements)
-        ]
-
-    @property
-    def _page_level_elements(self) -> list[BaseHTMLElement]:
-        return [
-            BaseHTMLElement("!DOCTYPE", attributes={"html": True}, requires_closing_tag=False),
-            BaseHTMLElement("html", content=self._html_level_elements),
-        ]
-
-    def to_string(self) -> str:
-        page_str: str = ""
-        for element in self._page_level_elements:
-            page_str += str(element)
-        return page_str
