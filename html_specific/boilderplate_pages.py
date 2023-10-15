@@ -1,4 +1,4 @@
-class HTMLPage(GeneralBaseElement):
+class HTML5Page(GeneralBaseElement):
     def __init__(self, title: str = "Untitled") -> None:
         self.head_elements: list[BaseHTMLElement] = [TitleElement(content=title)]
         self.body_elements: list[BaseHTMLElement] = []
