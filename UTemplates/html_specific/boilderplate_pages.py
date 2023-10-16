@@ -17,7 +17,7 @@ class HTML5Page(GeneralBaseElement):
 
     @property
     def _html_level_elements(self) -> list[BaseHTMLElement]:
-        return [HeadElement(), BodyElement()]
+        return [HeadElement(content=self.head_elements), BodyElement(content=self.body_elements)]
 
     @property
     def _page_level_elements(self) -> list[BaseHTMLElement]:
