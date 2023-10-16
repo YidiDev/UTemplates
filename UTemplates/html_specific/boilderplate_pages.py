@@ -21,7 +21,7 @@ class HTML5Page(GeneralBaseElement):
 
     @property
     def _page_level_elements(self) -> list[BaseHTMLElement]:
-        return [HTML5Declaration(), HTMLElement()]
+        return [HTML5Declaration(), HTMLElement(content=self._html_level_elements)]
 
     def to_string(self) -> str:
         page_str: str = ""
