@@ -2,6 +2,14 @@ import html
 from ..general_base import GeneralBaseElement
 
 
+class SafeHTMLElement(GeneralBaseElement):
+    def __init__(self, content: str) -> None:
+        self.content: str = content
+
+    def to_string(self) -> str:
+        return str(self.content)
+
+
 class BaseHTMLElement(GeneralBaseElement):
     def __init__(
             self,
