@@ -84,7 +84,6 @@ class LegendElement(BaseHTMLElement):
         super().__init__("legend", **kwargs)
 
 
-
 class ListItemElement(BaseHTMLElement):
     """
     ListItemElement Class extends BaseHTMLElement to represent the HTML <li> element.
@@ -142,7 +141,7 @@ class LinkElement(BaseHTMLElement):
 
     def __init__(
             self,
-            crossorigin: str = None,
+            crossorigin: bool = False,
             href: str = None,
             hreflang: str = None,
             media: str = None,
@@ -158,8 +157,8 @@ class LinkElement(BaseHTMLElement):
 
         Parameters:
         -----------
-        crossorigin : str, optional
-            Specifies how the element handles crossorigin requests.
+        crossorigin : bool, optional
+            Specifies if the element handles crossorigin requests.
         href : str, optional
             Specifies the URL of the linked resource.
         hreflang : str, optional
@@ -180,7 +179,7 @@ class LinkElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
+        attributes: dict[str, str | bool] = {}
         if kwargs.get("attributes"):
             attributes.update(kwargs["attributes"])
             del kwargs["attributes"]
