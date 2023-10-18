@@ -327,7 +327,7 @@ class ButtonElement(BaseHTMLElement):
 
     Example Usage:
     --------------
-    >>> btn_elem = ButtonElement(value="Click Me", type_attribute="submit")
+    >>> btn_elem = ButtonElement(value="Click Me", type="submit")
     >>> print(btn_elem.to_string())
     <button value="Click Me" type="submit"></button>
 
@@ -344,7 +344,7 @@ class ButtonElement(BaseHTMLElement):
             formnovalidate: bool = False,
             formtarget: str = None,
             name: str = None,
-            type_attribute: str = None,
+            type: str = None,
             value: str = None,
             **kwargs
     ) -> None:
@@ -371,7 +371,7 @@ class ButtonElement(BaseHTMLElement):
             Specifies where to display the response after submitting the form.
         name: str
             Specifies the name for the button.
-        type_attribute: str
+        type: str
             Specifies the type of the button (e.g., 'submit', 'reset', 'button').
         value: str
             Specifies the initial value for the button.
@@ -393,6 +393,6 @@ class ButtonElement(BaseHTMLElement):
         attributes["formnovalidate"] = formnovalidate
         attributes["formtarget"] = formtarget
         attributes["name"] = name
-        attributes["type"] = type_attribute
+        attributes["type"] = type
         attributes["value"] = value
         super().__init__("button", attributes=attributes, **kwargs)

@@ -50,14 +50,14 @@ class EmbedElement(BaseHTMLElement):
 
     Example Usage:
     --------------
-    >>> embed_elem = EmbedElement(src="video.mp4", type_attribute="video/mp4", width="640", height="480")
+    >>> embed_elem = EmbedElement(src="video.mp4", type="video/mp4", width="640", height="480")
     >>> print(embed_elem.to_string())
     <embed src="video.mp4" type="video/mp4" width="640" height="480">
 
     """
 
     def __init__(
-            self, height: str = None, src: str = None, type_attribute: str = None, width: str = None, **kwargs
+            self, height: str = None, src: str = None, type: str = None, width: str = None, **kwargs
     ) -> None:
         """
         Initializes a new EmbedElement instance.
@@ -68,7 +68,7 @@ class EmbedElement(BaseHTMLElement):
             Specifies the height of the embedded content.
         src : str, optional
             Specifies the URL of the embedded content.
-        type_attribute : str, optional
+        type : str, optional
             Specifies the MIME type of the embedded content.
         width : str, optional
             Specifies the width of the embedded content.
@@ -82,6 +82,6 @@ class EmbedElement(BaseHTMLElement):
             del kwargs["attributes"]
         attributes["height"] = height
         attributes["src"] = src
-        attributes["type_attribute"] = type_attribute
+        attributes["type"] = type
         attributes["width"] = width
         super().__init__("embed", attributes=attributes, **kwargs)

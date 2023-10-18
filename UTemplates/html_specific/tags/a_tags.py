@@ -29,7 +29,7 @@ class AnchorElement(BaseHTMLElement):
         Specifies the relationship between the current document and the linked document.
     target: str (optional)
         Specifies where to open the linked document.
-    type_attribute: str (optional)
+    type: str (optional)
         Specifies the media type of the linked document.
 
     Methods:
@@ -59,7 +59,7 @@ class AnchorElement(BaseHTMLElement):
             referrerpolicy: str = None,
             rel: str = None,
             target: str = None,
-            type_attribute: str = None,
+            type: str = None,
             **kwargs
     ) -> None:
         """
@@ -83,7 +83,7 @@ class AnchorElement(BaseHTMLElement):
             Relationship between current document and linked document.
         target: str (optional)
             Where to open the linked document.
-        type_attribute: str (optional)
+        type: str (optional)
             Media type of the linked document.
         **kwargs: dict
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
@@ -102,7 +102,7 @@ class AnchorElement(BaseHTMLElement):
         attributes["referrerpolicy"] = referrerpolicy
         attributes["rel"] = rel
         attributes["target"] = target
-        attributes["type"] = type_attribute
+        attributes["type"] = type
 
         super().__init__("a", attributes=attributes, **kwargs)
 
@@ -231,7 +231,7 @@ class AreaElement(BaseHTMLElement):
         Specifies the shape of the clickable area (default, rect, circle, or poly).
     target: str (optional)
         Specifies where to open the linked document.
-    type_attribute: str (optional)
+    type: str (optional)
         Specifies the media type of the linked resource.
 
     Methods:
@@ -259,7 +259,7 @@ class AreaElement(BaseHTMLElement):
             rel: str = None,
             shape: str = None,
             target: str = None,
-            type_attribute: str = None,
+            type: str = None,
             **kwargs
     ) -> None:
         """
@@ -288,7 +288,7 @@ class AreaElement(BaseHTMLElement):
         attributes["rel"] = rel
         attributes["shape"] = shape
         attributes["target"] = target
-        attributes["type"] = type_attribute
+        attributes["type"] = type
 
         super().__init__("area", attributes=attributes, self_closing=True, **kwargs)
 
