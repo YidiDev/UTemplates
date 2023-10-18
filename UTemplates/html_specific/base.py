@@ -51,7 +51,8 @@ class BaseHTMLElement(GeneralBaseElement):
             title: str = None,
             lang: str = None,
             dir: str = None,
-            tab_index: str | int = None
+            tab_index: str | int = None,
+            **kwargs
     ) -> None:
         """
         Initializes a new BaseHTMLElement instance.
@@ -76,6 +77,8 @@ class BaseHTMLElement(GeneralBaseElement):
         :param lang: Language attribute for the HTML element.
         :param dir: Text direction attribute for the HTML element.
         :param tab_index: Tabindex attribute for the HTML element.
+        :param kwargs: Additional keyword arguments representing attributes not explicitly listed.
+                       These will be added to the attributes of the HTML element.
         """
         self.tag_name: str = tag_name
         self.attributes: dict[str, any] = attributes if attributes is not None else {}
@@ -110,6 +113,9 @@ class BaseHTMLElement(GeneralBaseElement):
         if isinstance(self.tab_index, int):
             self.tab_index: str = str(self.tab_index)
         self.attributes["tabindex"] = self.tab_index
+
+        for key, value in kwargs.items():
+            self.attributes[key] = value
 
     @property
     def _attributes(self) -> str:
