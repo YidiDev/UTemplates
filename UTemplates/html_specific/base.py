@@ -1,5 +1,6 @@
 import html
 from ..general_base import GeneralBaseElement
+from ..utils import convert_value
 
 
 class SafeHTMLElement(GeneralBaseElement):
@@ -192,17 +193,17 @@ class BaseHTMLElement(GeneralBaseElement):
 
         :return: Content as a string.
         """
-        def ensure_content_is_escaped(content: str | GeneralBaseElement) -> str:
+        def ensure_content_is_converted_and_escaped(content: str | GeneralBaseElement) -> str:
             if isinstance(content, GeneralBaseElement):
                 escaped_content: str = str(content)
             else:
-                escaped_content: str = html.escape(str(content))
+                escaped_content: str = html.escape(str(convert_value(content)))
             return escaped_content
         if self.self_closing:
             return ""
         content_strs: list[str] = []
         for item in self.content:
-            content_strs.append(ensure_content_is_escaped(item))
+            content_strs.append(ensure_content_is_converted_and_escaped(item))
         return "".join(content_strs)
 
     @property
