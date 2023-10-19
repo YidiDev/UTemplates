@@ -21,7 +21,10 @@ class ConfigurationManager:
         """
         config_path: str = os.environ.get(ENV_CONFIG_PATH, DEFAULT_CONFIG_PATH)
         if not os.path.exists(config_path):
-            raise ValueError(f"Config file not found at {config_path}")
+            if config_path == DEFAULT_CONFIG_PATH:
+                cls._conversion_functions: list = []
+            else:
+                raise ValueError(f"Config file not found at {config_path}")
 
         with open(config_path, 'r') as f:
             config: dict[str, any] = json.load(f)
