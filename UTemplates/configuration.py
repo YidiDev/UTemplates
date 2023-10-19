@@ -9,10 +9,16 @@ ENV_CONFIG_PATH: str = "U_TEMPLATING_CONFIG_PATH"
 
 
 class ConfigurationManager:
+    """A manager class to handle the loading and storage of conversion functions from a configuration file."""
     _conversion_functions: list = None
 
     @classmethod
     def _load_config(cls) -> None:
+        """
+        A private method to load conversion functions from the configuration file.
+        The configuration file's path is first searched in the environment variable `ENV_CONFIG_PATH`.
+        If not found, it falls back to the `DEFAULT_CONFIG_PATH`.
+        """
         config_path: str = os.environ.get(ENV_CONFIG_PATH, DEFAULT_CONFIG_PATH)
         if not os.path.exists(config_path):
             raise ValueError(f"Config file not found at {config_path}")
@@ -34,6 +40,12 @@ class ConfigurationManager:
 
     @classmethod
     def get_conversion_functions(cls) -> list:
+        """
+        Public method to fetch the loaded conversion functions.
+        If the functions haven't been loaded yet, it triggers the loading process.
+        Returns:
+            list: A list of loaded conversion functions.
+        """
         if cls._conversion_functions is None:
             cls._load_config()
         return cls._conversion_functions
