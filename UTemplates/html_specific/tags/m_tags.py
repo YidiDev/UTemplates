@@ -156,7 +156,12 @@ class MetaElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        super().__init__("meta", charset=charset, content=content, http_equiv=http_equiv, name=name, **kwargs)
+        attributes: dict[str, str] = {}
+        if kwargs.get("attributes"):
+            attributes.update(kwargs["attributes"])
+            del kwargs["attributes"]
+        attributes['content'] = content
+        super().__init__("meta", charset=charset, http_equiv=http_equiv, name=name, attributes=attributes, **kwargs)
 
 
 class MeterElement(BaseHTMLElement):
