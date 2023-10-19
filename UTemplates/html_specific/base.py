@@ -193,11 +193,13 @@ class BaseHTMLElement(GeneralBaseElement):
 
         :return: Content as a string.
         """
-        def ensure_content_is_converted_and_escaped(content: str | GeneralBaseElement) -> str:
+        def ensure_content_is_converted_and_escaped(content: any) -> str:
+            if not isinstance(content, GeneralBaseElement):
+                content: any = convert_value(content)
             if isinstance(content, GeneralBaseElement):
                 escaped_content: str = str(content)
             else:
-                escaped_content: str = html.escape(str(convert_value(content)))
+                escaped_content: str = html.escape(str(content))
             return escaped_content
         if self.self_closing:
             return ""
