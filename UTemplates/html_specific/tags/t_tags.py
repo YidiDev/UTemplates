@@ -168,14 +168,7 @@ class TableDataElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['colspan'] = colspan
-        attributes['headers'] = headers
-        attributes['rowspan'] = rowspan
-        super().__init__("td", attributes=attributes, **kwargs)
+        super().__init__("td", colspan=colspan, headers=headers, rowspan=rowspan, **kwargs)
 
 
 class TemplateElement(BaseHTMLElement):
@@ -333,23 +326,22 @@ class TextAreaElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['autofocus'] = autofocus
-        attributes['cols'] = cols
-        attributes['dirname'] = dirname
-        attributes['disabled'] = disabled
-        attributes['form'] = form
-        attributes['maxlength'] = maxlength
-        attributes['name'] = name
-        attributes['placeholder'] = placeholder
-        attributes['readonly'] = readonly
-        attributes['required'] = required
-        attributes['rows'] = rows
-        attributes['wrap'] = wrap
-        super().__init__("textarea", attributes=attributes, **kwargs)
+        super().__init__(
+            "textarea",
+            autofocus=autofocus,
+            cols=cols,
+            dirname=dirname,
+            disabled=disabled,
+            form=form,
+            maxlength=maxlength,
+            name=name,
+            placeholder=placeholder,
+            readonly=readonly,
+            required=required,
+            rows=rows,
+            wrap=wrap,
+            **kwargs
+        )
 
 
 class TableFooterElement(BaseHTMLElement):
@@ -463,16 +455,7 @@ class TableHeaderCellElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['abbr'] = abbr
-        attributes['colspan'] = colspan
-        attributes['headers'] = headers
-        attributes['rowspan'] = rowspan
-        attributes['scope'] = scope
-        super().__init__("th", attributes=attributes, **kwargs)
+        super().__init__("th", abbr=abbr, colspan=colspan, headers=headers, rowspan=rowspan, scope=scope, **kwargs)
 
 
 class TableHeaderElement(BaseHTMLElement):
@@ -563,12 +546,7 @@ class TimeElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['datetime'] = datetime
-        super().__init__("time", attributes=attributes, **kwargs)
+        super().__init__("time", datetime=datetime, **kwargs)
 
 
 class TitleElement(BaseHTMLElement):
@@ -742,13 +720,4 @@ class TrackElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['default'] = default
-        attributes['kind'] = kind
-        attributes['label'] = label
-        attributes['src'] = src
-        attributes['srclang'] = srclang
-        super().__init__("track", attributes=attributes, **kwargs)
+        super().__init__("track", default=default, kind=kind, label=label, src=src, srclang=srclang, **kwargs)

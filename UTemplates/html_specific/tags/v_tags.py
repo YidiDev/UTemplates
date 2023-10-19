@@ -149,15 +149,16 @@ class VideoElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes = {
-            'autoplay': autoplay,
-            'controls': controls,
-            'height': height,
-            'loop': loop,
-            'muted': muted,
-            'poster': poster,
-            'preload': preload,
-            'src': src,
-            'width': width
-        }
-        super().__init__("video", attributes=attributes, **kwargs)
+        super().__init__(
+            "video",
+            autoplay=autoplay,
+            controls=controls,
+            height=height,
+            loop=loop,
+            muted=muted,
+            poster=poster,
+            preload=preload,
+            src=src,
+            width=width,
+            **kwargs
+        )

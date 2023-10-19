@@ -1,5 +1,5 @@
 import os.path
-from .general_base import GeneralBaseElement
+from .general_base import (GeneralBaseElement, GroupedBaseElement)
 
 
 def render(
@@ -33,7 +33,7 @@ def render(
     """
     if isinstance(html_content, (str, GeneralBaseElement)):
         html_content: list[str | GeneralBaseElement] = [html_content]
-    return "".join(str(html_element) for html_element in html_content)
+    return str(GroupedBaseElement(elements=html_content))
 
 
 def save_to_file(html_str: str, file_path: any) -> None:

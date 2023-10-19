@@ -37,12 +37,7 @@ class DataElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content'.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["value"] = value
-        super().__init__("data", attributes=attributes, **kwargs)
+        super().__init__("data", value=value, **kwargs)
 
 
 class DataListElement(BaseHTMLElement):
@@ -151,15 +146,7 @@ class DeletedElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content' or 'attributes'.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        if cite is not None:
-            attributes["cite"] = cite
-        if datetime is not None:
-            attributes["datetime"] = datetime
-        super().__init__("del", attributes=attributes, **kwargs)
+        super().__init__("del", cite=cite, datetime=datetime, **kwargs)
 
 
 class DetailsElement(BaseHTMLElement):
@@ -196,13 +183,7 @@ class DetailsElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content' or 'attributes'.
 
         """
-        attributes: dict[str, bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        if open is not None:
-            attributes["open"] = open
-        super().__init__("details", attributes=attributes, **kwargs)
+        super().__init__("details", open=open, **kwargs)
 
 
 class DefinitionElement(BaseHTMLElement):
@@ -274,13 +255,7 @@ class DialogElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content' or 'attributes'.
 
         """
-        attributes: dict[str, bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        if open is not None:
-            attributes["open"] = open
-        super().__init__("dialog", attributes=attributes, **kwargs)
+        super().__init__("dialog", open=open, **kwargs)
 
 
 class DivElement(BaseHTMLElement):

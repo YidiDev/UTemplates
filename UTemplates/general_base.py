@@ -36,3 +36,19 @@ class GeneralBaseElement(ABC):
         :return: Should return the HTML string representation when implemented.
         """
         pass
+
+
+class GroupedBaseElement(GeneralBaseElement):
+    def __init__(self, elements: iter | GeneralBaseElement) -> None:
+        """
+        Initialize with an iterable of elements.
+
+        :param elements: An iterable containing the elements to concatenate.
+        """
+        self.elements: iter | GeneralBaseElement = elements
+
+    def to_string(self) -> str:
+        if isinstance(self.elements, GeneralBaseElement):
+            return str(self.elements)
+        else:
+            return "".join(map(str, self.elements))

@@ -76,12 +76,4 @@ class EmbedElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content', 'attributes', or 'self_closing'.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["height"] = height
-        attributes["src"] = src
-        attributes["type"] = type
-        attributes["width"] = width
-        super().__init__("embed", attributes=attributes, **kwargs)
+        super().__init__("embed", height=height, src=src, type=type, width=width, **kwargs)

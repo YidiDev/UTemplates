@@ -190,9 +190,4 @@ class HTMLElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class,
             such as 'attributes'.
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["xmlns"] = xmlns
-        super().__init__("html", attributes=attributes, **kwargs)
+        super().__init__("html", xmlns=xmlns, **kwargs)

@@ -71,13 +71,7 @@ class ParameterElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes = {}
-        if name is not None:
-            attributes['name'] = name
-        if value is not None:
-            attributes['value'] = value
-
-        super().__init__("param", attributes=attributes, self_closing=True, **kwargs)
+        super().__init__("param", name=name, value=value, self_closing=True, **kwargs)
 
 
 class PictureElement(BaseHTMLElement):
@@ -198,8 +192,4 @@ class ProgressElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {
-            'max': max,
-            'value': value
-        }
-        super().__init__("progress", attributes=attributes, **kwargs)
+        super().__init__("progress", max=max, value=value, **kwargs)

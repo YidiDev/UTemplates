@@ -38,14 +38,7 @@ class FieldsetElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content', 'attributes', or 'self_closing'.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["disabled"] = disabled
-        attributes["form"] = form
-        attributes["name"] = name
-        super().__init__("fieldset", attributes=attributes, **kwargs)
+        super().__init__("fieldset", disabled=disabled, form=form, name=name, **kwargs)
 
 
 class FigureCaptionElement(BaseHTMLElement):
@@ -99,7 +92,7 @@ class FigureElement(BaseHTMLElement):
 
     Example Usage:
     --------------
-    >>> figure_elem = FigureElement(content=[image_elem, figcaption_elem])
+    >>> figure_elem = FigureElement(content=[ImageElement(), FigureCaptionElement()])
     >>> print(figure_elem.to_string())
     <figure><img src="example.jpg" alt="An example image"><figcaption>This is a caption.</figcaption></figure>
 
@@ -214,17 +207,16 @@ class FormElement(BaseHTMLElement):
         **kwargs : dict
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content', 'attributes', or 'self_closing'.
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["accept-charset"] = accept_charset
-        attributes["action"] = action
-        attributes["autocomplete"] = autocomplete
-        attributes["enctype"] = enctype
-        attributes["method"] = method
-        attributes["name"] = name
-        attributes["novalidate"] = novalidate
-        attributes["rel"] = rel
-        attributes["target"] = target
-        super().__init__("form", attributes=attributes, **kwargs)
+        super().__init__(
+            "form",
+            accept_charset=accept_charset,
+            action=action,
+            autocomplete=autocomplete,
+            enctype=enctype,
+            method=method,
+            name=name,
+            novalidate=novalidate,
+            rel=rel,
+            target=target,
+            **kwargs
+        )

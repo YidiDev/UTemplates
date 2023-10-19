@@ -86,15 +86,7 @@ class BaseElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-
-        attributes["href"] = href
-        attributes["target"] = target
-
-        super().__init__("base", attributes=attributes, **kwargs)
+        super().__init__("base", href=href, target=target, **kwargs)
 
 
 class BiDirectionalIsolationElement(BaseHTMLElement):
@@ -175,14 +167,7 @@ class BiDirectionalOverrideElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-
-        attributes['dir'] = dir
-
-        super().__init__("bdo", attributes=attributes, **kwargs)
+        super().__init__("bdo", dir=dir, **kwargs)
 
 
 class BlockquoteElement(BaseHTMLElement):
@@ -226,14 +211,7 @@ class BlockquoteElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content'.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-
-        attributes["cite"] = cite
-
-        super().__init__("blockquote", attributes=attributes, **kwargs)
+        super().__init__("blockquote", cite=cite, **kwargs)
 
 
 class BodyElement(BaseHTMLElement):
@@ -380,19 +358,18 @@ class ButtonElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content'.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["autofocus"] = autofocus
-        attributes["disabled"] = disabled
-        attributes["form"] = form
-        attributes["formaction"] = formaction
-        attributes["formenctype"] = formenctype
-        attributes["formmethod"] = formmethod
-        attributes["formnovalidate"] = formnovalidate
-        attributes["formtarget"] = formtarget
-        attributes["name"] = name
-        attributes["type"] = type
-        attributes["value"] = value
-        super().__init__("button", attributes=attributes, **kwargs)
+        super().__init__(
+            "button",
+            autofocus=autofocus,
+            disabled=disabled,
+            form=form,
+            formaction=formaction,
+            formenctype=formenctype,
+            formmethod=formmethod,
+            formnovalidate=formnovalidate,
+            formtarget=formtarget,
+            name=name,
+            type=type,
+            value=value,
+            **kwargs
+        )

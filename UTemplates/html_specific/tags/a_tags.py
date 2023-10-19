@@ -89,22 +89,19 @@ class AnchorElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-
-        attributes["href"] = href
-        attributes["download"] = download
-        attributes["hreflang"] = hreflang
-        attributes["media"] = media
-        attributes["ping"] = ' '.join(ping) if ping else None
-        attributes["referrerpolicy"] = referrerpolicy
-        attributes["rel"] = rel
-        attributes["target"] = target
-        attributes["type"] = type
-
-        super().__init__("a", attributes=attributes, **kwargs)
+        super().__init__(
+            "a",
+            href=href,
+            download=download,
+            hrelang=hreflang,
+            media=media,
+            ping=ping,
+            referrerpolicy=referrerpolicy,
+            rel=rel,
+            target=target,
+            type=type,
+            **kwargs
+        )
 
 
 class AbbreviationElement(BaseHTMLElement):
@@ -151,14 +148,7 @@ class AbbreviationElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-
-        attributes['title'] = title
-
-        super().__init__("abbr", attributes=attributes, content=abbreviation, **kwargs)
+        super().__init__("abbr", title=title, content=abbreviation, **kwargs)
 
 
 class AddressElement(BaseHTMLElement):
@@ -273,24 +263,22 @@ class AreaElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-
-        attributes["alt"] = alt
-        attributes["coords"] = coords
-        attributes["download"] = download
-        attributes["href"] = href
-        attributes["hreflang"] = hreflang
-        attributes["media"] = media
-        attributes["referrerpolicy"] = referrerpolicy
-        attributes["rel"] = rel
-        attributes["shape"] = shape
-        attributes["target"] = target
-        attributes["type"] = type
-
-        super().__init__("area", attributes=attributes, self_closing=True, **kwargs)
+        super().__init__(
+            "area",
+            alt=alt,
+            coords=coords,
+            download=download,
+            href=href,
+            hreflang=hreflang,
+            media=media,
+            referrerpolicy=referrerpolicy,
+            rel=rel,
+            shape=shape,
+            target=target,
+            type=type,
+            self_closing=True,
+            **kwargs
+        )
 
 
 class ArticleElement(BaseHTMLElement):
@@ -426,16 +414,6 @@ class AudioElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-
-        attributes["autoplay"] = autoplay
-        attributes["controls"] = controls
-        attributes["loop"] = loop
-        attributes["muted"] = muted
-        attributes["preload"] = preload
-        attributes["src"] = src
-
-        super().__init__("audio", attributes=attributes, **kwargs)
+        super().__init__(
+            "audio", autoplay=autoplay, controls=controls, loop=loop, muted=muted, preload=preload, src=src, **kwargs
+        )

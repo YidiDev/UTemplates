@@ -26,7 +26,6 @@ class CanvasElement(BaseHTMLElement):
 
     def __init__(
             self,
-            id: str = None,
             height: str = "150",
             width: str = "300",
             **kwargs
@@ -36,8 +35,6 @@ class CanvasElement(BaseHTMLElement):
 
         Parameters:
         -----------
-        id: str
-            Specifies a unique id for the canvas element.
         height: str
             Specifies the height of the canvas element. Default is "150".
         width: str
@@ -47,14 +44,7 @@ class CanvasElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content'.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["id"] = id
-        attributes["height"] = height
-        attributes["width"] = width
-        super().__init__("canvas", attributes=attributes, **kwargs)
+        super().__init__("canvas", height=height, width=width, **kwargs)
 
 
 class CaptionElement(BaseHTMLElement):
@@ -196,12 +186,7 @@ class ColumnElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content'.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["span"] = span
-        super().__init__("col", attributes=attributes, **kwargs)
+        super().__init__("col", span=span, **kwargs)
 
 
 class ColumnGroupElement(BaseHTMLElement):
@@ -242,9 +227,4 @@ class ColumnGroupElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class, such as 'content'.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["span"] = span
-        super().__init__("colgroup", attributes=attributes, **kwargs)
+        super().__init__("colgroup", span=span, **kwargs)

@@ -103,22 +103,21 @@ class InlineFrameElement(BaseHTMLElement):
             Optional keyword arguments inherited from the BaseHTMLElement parent class,
             such as 'attributes' or 'content'.
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["allow"] = allow
-        attributes["allowfullscreen"] = allowfullscreen
-        attributes["allowpaymentrequest"] = allowpaymentrequest
-        attributes["height"] = height
-        attributes["loading"] = loading
-        attributes["name"] = name
-        attributes["referrerpolicy"] = referrerpolicy
-        attributes["sandbox"] = sandbox
-        attributes["src"] = src
-        attributes["srcdoc"] = srcdoc
-        attributes["width"] = width
-        super().__init__("iframe", attributes=attributes, **kwargs)
+        super().__init__(
+            "iframe",
+            allow=allow,
+            allowfullscreen=allowfullscreen,
+            allowpaymentrequest=allowpaymentrequest,
+            height=height,
+            loading=loading,
+            name=name,
+            referrerpolicy=referrerpolicy,
+            sandbox=sandbox,
+            src=src,
+            srcdoc=srcdoc,
+            width=width,
+            **kwargs
+        )
 
 
 class ImageElement(BaseHTMLElement):
@@ -192,23 +191,21 @@ class ImageElement(BaseHTMLElement):
             such as 'attributes' or 'content'.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["alt"] = alt
-        attributes["crossorigin"] = crossorigin
-        attributes["height"] = height
-        attributes["ismap"] = ismap
-        attributes["loading"] = loading
-        attributes["longdesc"] = longdesc
-        attributes["referrerpolicy"] = referrerpolicy
-        attributes["sizes"] = sizes
-        attributes["src"] = src
-        attributes["srcset"] = srcset
-        attributes["usermap"] = usermap
-        attributes["width"] = width
-        super().__init__("img", attributes=attributes, **kwargs)
+        super().__init__(
+            "img",
+            alt=alt,
+            crossorigin=crossorigin,
+            height=height,
+            ismap=ismap,
+            loading=loading,
+            longdesc=longdesc,
+            sizes=sizes,
+            src=src,
+            srcset=srcset,
+            usermap=usermap,
+            width=width,
+            **kwargs
+        )
 
 
 class InputElement(BaseHTMLElement):
@@ -336,43 +333,41 @@ class InputElement(BaseHTMLElement):
             Specifies the width of the input element (only for type="image").
         **kwargs : dict
         """
-
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["accept"] = accept
-        attributes["alt"] = alt
-        attributes["autocomplete"] = autocomplete
-        attributes["autofocus"] = autofocus
-        attributes["checked"] = checked
-        attributes["dirname"] = dirname
-        attributes["disabled"] = disabled
-        attributes["form"] = form
-        attributes["formaction"] = formaction
-        attributes["formenctype"] = formenctype
-        attributes["formmethod"] = formmethod
-        attributes["formnovalidate"] = formnovalidate
-        attributes["formtarget"] = formtarget
-        attributes["height"] = height
-        attributes["list"] = list
-        attributes["max"] = max
-        attributes["maxlength"] = maxlength
-        attributes["min"] = min
-        attributes["minlength"] = minlength
-        attributes["multiple"] = multiple
-        attributes["name"] = name
-        attributes["pattern"] = pattern
-        attributes["placeholder"] = placeholder
-        attributes["readonly"] = readonly
-        attributes["required"] = required
-        attributes["size"] = size
-        attributes["src"] = src
-        attributes["step"] = step
-        attributes["type"] = type
-        attributes["value"] = value
-        attributes["width"] = width
-        super().__init__("input", attributes=attributes, **kwargs)
+        super().__init__(
+            "input",
+            accept=accept,
+            alt=alt,
+            autocomplete=autocomplete,
+            autofocus=autofocus,
+            checked=checked,
+            dirname=dirname,
+            disabled=disabled,
+            form=form,
+            formaction=formaction,
+            formenctype=formenctype,
+            formmethod=formmethod,
+            formnovalidate=formnovalidate,
+            formtarget=formtarget,
+            height=height,
+            list=list,
+            max=max,
+            maxlength=maxlength,
+            min=min,
+            minlength=minlength,
+            multiple=multiple,
+            name=name,
+            pattern=pattern,
+            placeholder=placeholder,
+            readonly=readonly,
+            required=required,
+            size=size,
+            src=src,
+            step=step,
+            type=type,
+            value=value,
+            width=width,
+            **kwargs
+        )
 
 
 class InsertElement(BaseHTMLElement):
@@ -408,10 +403,4 @@ class InsertElement(BaseHTMLElement):
         **kwargs : dict
             Additional keyword arguments that are passed to the parent class.
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['cite'] = cite
-        attributes['datetime'] = datetime
-        super().__init__("ins", attributes=attributes, **kwargs)
+        super().__init__("ins", cite=cite, datetime=datetime, **kwargs)

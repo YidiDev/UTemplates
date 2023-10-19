@@ -60,19 +60,18 @@ class ObjectElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['data'] = data
-        attributes['form'] = form
-        attributes['height'] = height
-        attributes['name'] = name
-        attributes['type'] = type
-        attributes['typemustmatch'] = typemustmatch
-        attributes['usemap'] = usemap
-        attributes['width'] = width
-        super().__init__("object", attributes=attributes, **kwargs)
+        super().__init__(
+            "object",
+            data=data,
+            form=form,
+            height=height,
+            name=name,
+            type=type,
+            typemustmatch=typemustmatch,
+            usemap=usemap,
+            width=width,
+            **kwargs
+        )
 
 
 class OrderedListElement(BaseHTMLElement):
@@ -118,14 +117,7 @@ class OrderedListElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['reversed'] = reversed
-        attributes['start'] = start
-        attributes['type'] = type
-        super().__init__("ol", attributes=attributes, **kwargs)
+        super().__init__("ol", reversed=reversed, start=start, type=type, **kwargs)
 
 
 class OptionGroupElement(BaseHTMLElement):
@@ -168,13 +160,7 @@ class OptionGroupElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['disabled'] = disabled
-        attributes['label'] = label
-        super().__init__("optgroup", attributes=attributes, **kwargs)
+        super().__init__("optgroup", disabled=disabled, label=label, **kwargs)
 
 
 class OptionElement(BaseHTMLElement):
@@ -218,15 +204,7 @@ class OptionElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['disabled'] = disabled
-        attributes['label'] = label
-        attributes['selected'] = selected
-        attributes['value'] = value
-        super().__init__("option", attributes=attributes, **kwargs)
+        super().__init__("option", disabled=disabled, label=label, selected=selected, value=value, **kwargs)
 
 
 class OutputElement(BaseHTMLElement):
@@ -271,6 +249,4 @@ class OutputElement(BaseHTMLElement):
             attributes.update(kwargs["attributes"])
             del kwargs["attributes"]
         attributes['for'] = for_attribute
-        attributes['form'] = form
-        attributes['name'] = name
-        super().__init__("output", attributes=attributes, **kwargs)
+        super().__init__("output", form=form, name=name, attributes=attributes, **kwargs)

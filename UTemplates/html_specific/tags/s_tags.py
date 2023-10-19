@@ -145,14 +145,17 @@ class ScriptElement(BaseHTMLElement):
             attributes.update(kwargs["attributes"])
             del kwargs["attributes"]
         attributes['async'] = async_attribute
-        attributes['crossorigin'] = crossorigin
-        attributes['defer'] = defer
-        attributes['integrity'] = integrity
-        attributes['nomodule'] = nomodule
-        attributes['referrerpolicy'] = referrerpolicy
-        attributes['src'] = src
-        attributes['type'] = type
-        super().__init__("script", attributes=attributes, **kwargs)
+        super().__init__(
+            "script",
+            crossorigin=crossorigin,
+            defer=defer,
+            integrity=integrity,
+            nomodule=nomodule,
+            referrerpolicy=referrerpolicy,
+            src=src,
+            type=type,
+            **kwargs
+        )
 
 
 class SectionElement(BaseHTMLElement):
@@ -260,18 +263,17 @@ class SelectElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['autofocus'] = autofocus
-        attributes['disabled'] = disabled
-        attributes['form'] = form
-        attributes['multiple'] = multiple
-        attributes['name'] = name
-        attributes['required'] = required
-        attributes['size'] = size
-        super().__init__("select", attributes=attributes, **kwargs)
+        super().__init__(
+            "select",
+            autofocus=autofocus,
+            disabled=disabled,
+            form=form,
+            multiple=multiple,
+            name=name,
+            required=required,
+            size=size,
+            **kwargs
+        )
 
 
 class SmallElement(BaseHTMLElement):
@@ -388,16 +390,7 @@ class SourceElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['media'] = media
-        attributes['sizes'] = sizes
-        attributes['src'] = src
-        attributes['srcset'] = srcset
-        attributes['type'] = type
-        super().__init__("source", attributes=attributes, **kwargs)
+        super().__init__("source", media=media, sizes=sizes, src=src, srcset=srcset, type=type, **kwargs)
 
 
 class SpanElement(BaseHTMLElement):
@@ -538,13 +531,7 @@ class StyleElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes["media"] = media
-        attributes["type"] = type
-        super().__init__("style", attributes=attributes, **kwargs)
+        super().__init__("style", media=media, type=type, **kwargs)
 
 
 class SubscriptElement(BaseHTMLElement):

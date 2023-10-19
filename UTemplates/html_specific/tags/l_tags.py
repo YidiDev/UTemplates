@@ -47,8 +47,7 @@ class LabelElement(BaseHTMLElement):
             attributes.update(kwargs["attributes"])
             del kwargs["attributes"]
         attributes['for'] = for_attribute
-        attributes['form'] = form
-        super().__init__("label", attributes=attributes, **kwargs)
+        super().__init__("label", form=form, attributes=attributes, **kwargs)
 
 
 class LegendElement(BaseHTMLElement):
@@ -179,17 +178,16 @@ class LinkElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str | bool] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['crossorigin'] = crossorigin
-        attributes['href'] = href
-        attributes['hreflang'] = hreflang
-        attributes['media'] = media
-        attributes['referrerpolicy'] = referrerpolicy
-        attributes['rel'] = rel
-        attributes['sizes'] = sizes
-        attributes['title'] = title
-        attributes['type'] = type
-        super().__init__("link", attributes=attributes, **kwargs)
+        super().__init__(
+            "link",
+            crossorigin=crossorigin,
+            href=href,
+            hreflang=hreflang,
+            media=media,
+            referrerpolicy=referrerpolicy,
+            rel=rel,
+            sizes=sizes,
+            title=title,
+            type=type,
+            **kwargs
+        )

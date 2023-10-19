@@ -115,7 +115,23 @@ class BaseHTMLElement(GeneralBaseElement):
         self.attributes["tabindex"] = self.tab_index
 
         for key, value in kwargs.items():
-            self.attributes[key] = value
+            self.attributes[key.replace("_", "-")] = value
+
+    def add_child(self, child: 'BaseHTMLElement') -> None:
+        """
+        Adds a child element to the content of the current HTML element.
+
+        HTML Use Case:
+            Useful for appending nested elements to the current element's content.
+
+        Example:
+            div_element = BaseHTMLElement("div", {"class": "container"})
+            span_element = BaseHTMLElement("span", content="Hello World")
+            div_element.add_child(span_element)
+
+        :param child: The BaseHTMLElement instance to add as a child.
+        """
+        self.content.append(child)
 
     @property
     def _attributes(self) -> str:

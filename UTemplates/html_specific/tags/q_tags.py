@@ -37,7 +37,4 @@ class QuotationElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {
-            'cite': cite
-        }
-        super().__init__("q", attributes=attributes, **kwargs)
+        super().__init__("q", cite=cite, **kwargs)

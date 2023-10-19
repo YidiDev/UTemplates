@@ -73,12 +73,7 @@ class MapElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['name'] = name
-        super().__init__("map", attributes=attributes, **kwargs)
+        super().__init__("map", name=name, **kwargs)
 
 
 class MarkedElement(BaseHTMLElement):
@@ -161,15 +156,7 @@ class MetaElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['charset'] = charset
-        attributes['content'] = content
-        attributes['http-equiv'] = http_equiv
-        attributes['name'] = name
-        super().__init__("meta", attributes=attributes, **kwargs)
+        super().__init__("meta", charset=charset, content=content, http_equiv=http_equiv, name=name, **kwargs)
 
 
 class MeterElement(BaseHTMLElement):
@@ -229,15 +216,6 @@ class MeterElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        attributes: dict[str, str] = {}
-        if kwargs.get("attributes"):
-            attributes.update(kwargs["attributes"])
-            del kwargs["attributes"]
-        attributes['form'] = form
-        attributes['high'] = high
-        attributes['low'] = low
-        attributes['max'] = max
-        attributes['min'] = min
-        attributes['optimum'] = optimum
-        attributes['value'] = value
-        super().__init__("meter", attributes=attributes, **kwargs)
+        super().__init__(
+            "meter", form=form, high=high, low=low, max=max, min=min, optimum=optimum, value=value, **kwargs
+        )
