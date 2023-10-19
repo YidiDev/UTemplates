@@ -90,6 +90,8 @@ class BaseHTMLElement(GeneralBaseElement):
         else:
             self.content: list[any] = [content]
         self.self_closing: bool = self_closing
+        if self.self_closing:
+            attributes["content"] = "".join(str(content_item) for content_item in self.content)
         self.declaration: bool = declaration
         if self.declaration:
             self.self_closing: bool = True
