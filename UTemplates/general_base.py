@@ -1,4 +1,5 @@
 from abc import (ABC, abstractmethod)
+from typing import Iterable
 
 
 class GeneralBaseElement(ABC):
@@ -39,13 +40,13 @@ class GeneralBaseElement(ABC):
 
 
 class GroupedBaseElement(GeneralBaseElement):
-    def __init__(self, elements: iter | GeneralBaseElement) -> None:
+    def __init__(self, elements: Iterable[GeneralBaseElement] | GeneralBaseElement) -> None:
         """
         Initialize with an iterable of elements.
 
         :param elements: An iterable containing the elements to concatenate.
         """
-        self.elements: iter | GeneralBaseElement = elements
+        self.elements: Iterable[GeneralBaseElement] | GeneralBaseElement = elements
 
     def to_string(self) -> str:
         if isinstance(self.elements, GeneralBaseElement):
