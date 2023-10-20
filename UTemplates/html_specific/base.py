@@ -46,6 +46,7 @@ class BaseHTMLElement(GeneralBaseElement):
             content: any = None,
             self_closing: bool = False,
             declaration: bool = False,
+            custom_utemplates_conversion_functions: list = None,
             id_attribute: str = None,
             class_attribute: str | list[str] = None,
             style: str = None,
@@ -67,19 +68,19 @@ class BaseHTMLElement(GeneralBaseElement):
             div_element = BaseHTMLElement("div", {"class": "container"}, "Hello World")
 
         :param tag_name: Name of the HTML tag (e.g., "div", "span", "a").
-        :param attributes: Dictionary of attributes to be added to the tag.
-        :param content: Content to be wrapped within the tag.
-        :param self_closing: Boolean indicating if the tag is self-closing (e.g., <img />, <br />).
-        :param declaration: Boolean indicating if the tag is a declaration (e.g., <!DOCTYPE html>).
-        :param id_attribute: Value of the "id" attribute for the HTML element.
-        :param class_attribute: Value of the "class" attribute, can be a string or a list of strings.
-        :param style: Inline CSS style for the HTML element.
+        :param attributes: Optional attributes to be added to the tag.
+        :param content: Content to be placed within the tag.
+        :param self_closing: If True, denotes a self-closing tag (e.g., <img />, <br />). Defaults to False.
+        :param declaration: If True, denotes a declaration tag (e.g., <!DOCTYPE html>). Defaults to False.
+        :param custom_utemplates_conversion_functions: List of custom conversion functions to transform content.
+        :param id_attribute: The "id" attribute value for the HTML element.
+        :param class_attribute: The "class" attribute value; can be a single string or list of strings for multiple classes.
+        :param style: Inline CSS style attribute for the HTML element.
         :param title: Title attribute for the HTML element.
         :param lang: Language attribute for the HTML element.
-        :param dir: Text direction attribute for the HTML element.
-        :param tab_index: Tabindex attribute for the HTML element.
-        :param kwargs: Additional keyword arguments representing attributes not explicitly listed.
-                       These will be added to the attributes of the HTML element.
+        :param dir: Text direction attribute ("ltr" or "rtl") for the HTML element.
+        :param tab_index: Tab index attribute for the HTML element; can be an integer or a string representation of an integer.
+        :param kwargs: Additional attributes not explicitly listed. Attribute names with underscores will be replaced by hyphens.
         """
         self.tag_name: str = tag_name
         self.attributes: dict[str, any] = attributes if attributes is not None else {}
@@ -96,6 +97,7 @@ class BaseHTMLElement(GeneralBaseElement):
         self.declaration: bool = declaration
         if self.declaration:
             self.self_closing: bool = True
+        self.custom_utemplates_conversion_functions: list = custom_utemplates_conversion_functions
 
         self.id_attribute: str | None = id_attribute if id_attribute is not None else self.attributes.get("id")
         self.attributes["id"] = self.id_attribute
@@ -182,7 +184,7 @@ class BaseHTMLElement(GeneralBaseElement):
     @property
     def _content(self) -> str:
         """
-        Generate the content string, ensuring it is escaped.
+        Generate the content string, ensuring it is converted and escaped.
 
         HTML Use Case:
             Used internally to insert the content between the opening
@@ -195,7 +197,9 @@ class BaseHTMLElement(GeneralBaseElement):
         """
         def ensure_content_is_converted_and_escaped(content: any) -> str:
             if not isinstance(content, GeneralBaseElement):
-                content: any = convert_value(content)
+                content: any = convert_value(
+                    content, conversion_functions_list=self.custom_utemplates_conversion_functions
+                )
             if isinstance(content, GeneralBaseElement):
                 escaped_content: str = str(content)
             else:

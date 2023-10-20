@@ -4,8 +4,8 @@ import importlib
 from types import ModuleType
 
 
-DEFAULT_CONFIG_PATH: str = "u_templating_config.json"
-ENV_CONFIG_PATH: str = "U_TEMPLATING_CONFIG_PATH"
+DEFAULT_CONFIG_PATH: str = "u_templates_config.json"
+ENV_CONFIG_PATH: str = "U_TEMPLATES_CONFIG_PATH"
 
 
 class ConfigurationManager:
@@ -21,12 +21,12 @@ class ConfigurationManager:
         """
         config_path: str = os.environ.get(ENV_CONFIG_PATH, DEFAULT_CONFIG_PATH)
         if not os.path.exists(config_path):
-            print("UTemplating is starting without a config file")
+            print("UTemplates is starting without a config file")
             if config_path == DEFAULT_CONFIG_PATH:
                 cls._conversion_functions: list = []
             else:
                 raise ValueError(f"Config file not found at {config_path}")
-        print(f"UTemplating is starting with the following config path: {config_path}")
+        print(f"UTemplates is starting with the following config path: {config_path}")
 
         with open(config_path, 'r') as f:
             config: dict[str, any] = json.load(f)
@@ -42,7 +42,7 @@ class ConfigurationManager:
             conversion_functions.append(function)
 
         cls._conversion_functions: list = conversion_functions
-        print(f"UTemplating is running with the following list of conversion functions: ")
+        print(f"UTemplates is running with the following list of conversion functions: ")
         print([func.__name__ for func in cls._conversion_functions])
 
     @classmethod
