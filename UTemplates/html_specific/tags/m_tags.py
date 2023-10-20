@@ -156,7 +156,9 @@ class MetaElement(BaseHTMLElement):
             Additional keyword arguments that are passed to the parent class.
 
         """
-        super().__init__("meta", charset=charset, content=content, http_equiv=http_equiv, name=name, **kwargs)
+        super().__init__(
+            "meta", charset=charset, content=content, http_equiv=http_equiv, name=name, self_closing=True, **kwargs
+        )
 
 
 class MeterElement(BaseHTMLElement):
