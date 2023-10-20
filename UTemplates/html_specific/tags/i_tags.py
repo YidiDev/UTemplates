@@ -366,6 +366,7 @@ class InputElement(BaseHTMLElement):
             type=type,
             value=value,
             width=width,
+            self_closing=True,
             **kwargs
         )
 
