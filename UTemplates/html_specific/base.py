@@ -122,7 +122,7 @@ class BaseHTMLElement(GeneralBaseElement):
         for key, value in kwargs.items():
             self.attributes[key.replace("_", "-")] = value
 
-    def add_child(self, child: 'BaseHTMLElement') -> None:
+    def add_child(self, child: GeneralBaseElement) -> None:
         """
         Adds a child element to the content of the current HTML element.
 
