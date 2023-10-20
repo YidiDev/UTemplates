@@ -4,8 +4,8 @@ import importlib
 from types import ModuleType
 
 
-DEFAULT_CONFIG_PATH: str = "u_templates_config.json"
-ENV_CONFIG_PATH: str = "U_TEMPLATES_CONFIG_PATH"
+DEFAULT_CONFIG_PATH: str = "utemplates_config.json"
+ENV_CONFIG_PATH: str = "UTEMPLATES_CONFIG_PATH"
 
 
 class ConfigurationManager:
