@@ -159,7 +159,10 @@ class BaseHTMLElement(GeneralBaseElement):
                     if value:
                         attributes_str += f" {key}"
                 else:
-                    attributes_str += f' {key}="{value}"'
+                    if '"' in value:
+                        attributes_str += f" {key}='{value}'"
+                    else:
+                        attributes_str += f' {key}="{value}"'
         return attributes_str
 
     @property
