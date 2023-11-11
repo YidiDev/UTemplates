@@ -52,7 +52,7 @@ class AnchorElement(BaseHTMLElement):
     def __init__(
             self,
             href: str,
-            download: str = None,
+            download: bool = False,
             hreflang: str = None,
             media: str = None,
             ping: list[str] = None,
@@ -69,7 +69,7 @@ class AnchorElement(BaseHTMLElement):
         -----------
         href: str
             The URL the link points to.
-        download: str (optional)
+        download: bool (optional)
             The download attribute.
         hreflang: str (optional)
             Language of the linked resource.
